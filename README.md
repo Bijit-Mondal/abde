@@ -1,46 +1,29 @@
-FFmpeg README
-=============
+# NodeJs - Youtube Video Downloader
+The best use case of Nodejs is its ability to stream content in chunks using pipes . This app is developed to use this feature to create a Media Downloader in Nodejs for downloading Video / Audio files from Youtube . Since downloading from youtube is not allowed, we use the popular youtube-dl as a child process in our application.
 
-FFmpeg is a collection of libraries and tools to process multimedia content
-such as audio, video, subtitles and related metadata.
+# Preview
+![](https://github.com/prajwalx/Nodejs--Youtube.Video.Downloader/blob/master/public/images/ezgif.com-gif-maker.gif)
 
-## Libraries
+## Getting Started
 
-* `libavcodec` provides implementation of a wider range of codecs.
-* `libavformat` implements streaming protocols, container formats and basic I/O access.
-* `libavutil` includes hashers, decompressors and miscellaneous utility functions.
-* `libavfilter` provides a mean to alter decoded Audio and Video through chain of filters.
-* `libavdevice` provides an abstraction to access capture and playback devices.
-* `libswresample` implements audio mixing and resampling routines.
-* `libswscale` implements color conversion and scaling routines.
+### Prerequisites
 
-## Tools
+- [Git](https://git-scm.com/)
+- [Node.js and npm](nodejs.org) Node ^13.0.1, npm ^6.12.0
+- [Youtube-dl](https://ytdl-org.github.io/youtube-dl/download.html)
+- [FFmpeg](https://ffmpeg.zeranoe.com/builds/)
+- Run `youtube-dl --version` to check if Youtube-dl is installed correctly.
+- Run `ffmpeg -version` to check if FFmpeg is installed correctly.
+- Proceed only if above 2 packages are installed correctly and versions are displayed in terminal.
+- Create your own [Youtube API KEY](https://developers.google.com/youtube/v3/getting-started) for   getting search results for queries. It's free of cost. Dont worry :)
+- Goto `routes/youtube_search.js` and update `const YOUTUBE_API_KEY = ' YOUR - API - KEY - HERE';`
 
-* [ffmpeg](https://ffmpeg.org/ffmpeg.html) is a command line toolbox to
-  manipulate, convert and stream multimedia content.
-* [ffplay](https://ffmpeg.org/ffplay.html) is a minimalistic multimedia player.
-* [ffprobe](https://ffmpeg.org/ffprobe.html) is a simple analysis tool to inspect
-  multimedia content.
-* Additional small tools such as `aviocat`, `ismindex` and `qt-faststart`.
+### Developing
 
-## Documentation
+1. Run `npm install` to install server dependencies.
 
-The offline documentation is available in the **doc/** directory.
+2. Run `npm start` to start the development server.
 
-The online documentation is available in the main [website](https://ffmpeg.org)
-and in the [wiki](https://trac.ffmpeg.org).
+3. Open your favorite browser and goto `localhost:3000`
 
-### Examples
-
-Coding examples are available in the **doc/examples** directory.
-
-## License
-
-FFmpeg codebase is mainly LGPL-licensed with optional components licensed under
-GPL. Please refer to the LICENSE file for detailed information.
-
-## Contributing
-
-Patches should be submitted to the ffmpeg-devel mailing list using
-`git format-patch` or `git send-email`. Github pull requests should be
-avoided because they are not part of our review process and will be ignored.
+4. Search for any video and enjoy your download :)
