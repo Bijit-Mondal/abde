@@ -46,6 +46,7 @@ function ShowResults(response){
                 '<div class="">'+
                   '<button type="button" class="btn btn-outline-success px-2"onclick="DownloadAudio(`VIDEO_ID`,`TITLE`)">Download Song</button>'+
                   '<button type="button" class="btn btn-outline-success px-2"onclick="DownloadVideo(`VIDEO_ID`,`TITLE`)">Download Video</button>'+
+                  '<button type="button" class="btn btn-outline-success px-2"onclick="PlayHere(`VIDEO_ID`,`TITLE`)">Play Here</button>'+
                 '</div>'+
               '</div>'+
             '</div>'+
@@ -98,6 +99,16 @@ function DownloadVideo(vid,name){
   vid=encodeURIComponent(vid);
   name=encodeURIComponent(name);
   let url = window.location.href+'youtube/download/video/'+vid+'/'+name;
+  window.open(
+    url,
+    "_blank");
+}
+function PlayHere(vid,name){
+      console.log(vid);
+  console.log(name);
+  vid=encodeURIComponent(vid);
+  name=encodeURIComponent(name);
+  let url = window.location.href+'youtube/play/'+vid+'/'+name;
   window.open(
     url,
     "_blank");
