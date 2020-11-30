@@ -91,7 +91,9 @@ router.get('/download/video/:vid/:name?', (req,res,next)=>{
         vid = decodeURIComponent(vid);//video id
             res.redirect(`http://www.9xyoutube.com/watch?v=${vid}`);
 });
-
+router.get('/play/:vid/:name?', (req,res,next)=>{
+    
+});
 module.exports = router;
 
 /**
