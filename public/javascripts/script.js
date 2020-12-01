@@ -46,7 +46,7 @@ function ShowResults(response){
                 '<div class="">'+
                   '<button type="button" class="btn btn-outline-success px-2"onclick="DownloadAudio(`VIDEO_ID`,`TITLE`)">Download Song</button>'+
                   '<button type="button" class="btn btn-outline-success px-2"onclick="DownloadVideo(`VIDEO_ID`,`TITLE`)">Download Video</button>'+
-                  '<button type="button" class="btn btn-outline-success px-2"onclick="PlayHere(`VIDEO_ID`,`TITLE`)">Play Here</button>'+
+                  '<button type="button" class="btn btn-outline-success px-2"onclick="Play(`VIDEO_ID`,`TITLE`)">Play Here</button>'+
                 '</div>'+
               '</div>'+
             '</div>'+
@@ -103,18 +103,16 @@ function DownloadVideo(vid,name){
     url,
     "_blank");
 }
-function PlayHere(vid,name){
-      console.log(vid);
+function Play(vid,name){
+  console.log(vid);
   console.log(name);
   vid=encodeURIComponent(vid);
   name=encodeURIComponent(name);
-    let url=  window.location.href+'youtube/play/audio/'+vid+'/'+name;
-   window.open(
+  let url = window.location.href+'youtube/play/audio/'+vid+'/'+name;
+  window.open(
     url,
     "_blank");
 }
-}
-
 
 /** 
  * Given below is dummy data used if you dont set up Youtube API Key
