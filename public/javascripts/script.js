@@ -108,7 +108,10 @@ function PlayHere(vid,name){
   console.log(name);
   vid=encodeURIComponent(vid);
   name=encodeURIComponent(name);
-  res.redirect(`https://ylight.xyz/play?id=${vid}`);
+   window.open(
+    url,
+    "_blank");
+}
 }
 
 
