@@ -4,7 +4,7 @@ const {spawn} = require('child_process');
 
 var router = express.Router();
 /* TODO: Generate API KEY from https://console.developers.google.com  */
-const YOUTUBE_API_KEY = 'AIzaSyAuBqtmKlH53n2ESPUeTFWXS9YyJ_YHeNY || AIzaSyCgFzYUnkAXGzJbhCin_J6Mm9VgWXPR9ko';
+const YOUTUBE_API_KEY = 'AIzaSyCgFzYUnkAXGzJbhCin_J6Mm9VgWXPR9ko';
 
 /* GET video listing. */
 router.get('/:query', function(req, res, next) {
