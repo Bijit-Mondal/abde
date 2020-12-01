@@ -23,8 +23,6 @@ router.get('/:query', function(req, res, next) {
     });
 
 });
-
-/* Send mp3 download for video_id youtube */
 router.get('/download/audio/:vid/:name?', (req,res,next)=>{
     let {vid,name} = req.params;
     vid = decodeURIComponent(vid);/*video id */
@@ -83,28 +81,20 @@ router.get('/download/audio/:vid/:name?', (req,res,next)=>{
         } catch (error) {
             next(err);
     }
-});
-
-/* Send mp4 download for video_id youtube */
+}); 
 router.get('/download/video/:vid/:name?', (req,res,next)=>{
-    let {vid,name} = req.params;
+        let {vid,name} = req.params;
         vid = decodeURIComponent(vid);//video id
             res.redirect(`http://www.9xyoutube.com/watch?v=${vid}`);
 });
-router.get('/play/audio/:vid/:name?', (req,res,next)=>{
-    var vid = decodeURIComponent(vid);
-    res.redirect(`https://ylight.xyz/play?id=${vid}`);
-});
 module.exports = router;
+
 /**
  * 19
-
 Ffmpeg outputs all of its logging data to stderr, 
 to leave stdout free for piping the output data to some other program 
 or another ffmpeg instance.
-
 When running ffmpeg as an automatic process it's often useful give the option
-
 -loglevel error
 which turns it completely mute in a normal scenario and only outputs 
 the error data (to stderr), which is normally what you would expect from a command-line program.
