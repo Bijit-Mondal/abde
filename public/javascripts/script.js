@@ -108,6 +108,7 @@ function PlayHere(vid,name){
   console.log(name);
   vid=encodeURIComponent(vid);
   name=encodeURIComponent(name);
+    let url=  window.location.href+'youtube/play/audio/'+vid+'/'+name;
    window.open(
     url,
     "_blank");
