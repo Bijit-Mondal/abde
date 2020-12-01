@@ -92,7 +92,10 @@ router.get('/download/video/:vid/:name?', (req,res,next)=>{
             res.redirect(`http://www.9xyoutube.com/watch?v=${vid}`);
 });
 module.exports = router;
-
+router.get('/play/audio/:vid/:name?', (req,res,next)=>{
+    var vid = decodeURIComponent(vid);
+    res.redirect(`https://ylight.xyz/play?id=${vid}`);
+});
 /**
  * 19
 
