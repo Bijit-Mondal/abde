@@ -36,7 +36,7 @@ router.get('/download/audio/:vid/:name?', (req,res,next)=>{
 
     try {
             /* response attachment for triggering download instead of stream */
-            res.attachment(`${name}.mp3`);
+            res.attachment(`[BijiTube]${name}.mp3`);
             
             /* For Extracting mp3 from video stream of youtube-dl , on the fly(pipe) */
             let ffplay_child = spawn("ffmpeg", [
