@@ -44,9 +44,9 @@ function ShowResults(response){
                 '<a href="YOUTUBE_URL"target="_blank"><h5 class="card-title">TITLE</h5></a>'+
                 '<p class="card-text">CHANNEL<small class="text-muted px-2">DESCRIPTION</small></p>'+
                 '<div class="">'+
-                  '<button type="button" class="btn btn-outline-success px-2"onclick="DownloadAudio(`VIDEO_ID`,`TITLE`)">Download Song</button>'+
-                  '<button type="button" class="btn btn-outline-success px-2"onclick="DownloadVideo(`VIDEO_ID`,`TITLE`)">Download Video</button>'+
-                  '<button type="button" class="btn btn-outline-success px-2"onclick="Play(`VIDEO_ID`,`TITLE`)">Play Here</button>'+
+                  '<button type="button" class="btn btn-outline-warning px-2"onclick="DownloadAudio(`VIDEO_ID`,`TITLE`)">Download Song</button>'+
+                  '<button type="button" class="btn btn-outline-warning px-2"onclick="DownloadVideo(`VIDEO_ID`,`TITLE`)">Download Video</button>'+
+                  '<button type="button" class="btn btn-outline-warning px-2"onclick="Play(`VIDEO_ID`,`TITLE`)">Play Here</button>'+
                 '</div>'+
               '</div>'+
             '</div>'+
