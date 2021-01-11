@@ -26,41 +26,23 @@ router.get('/:query', function(req, res, next) {
 
 /* Send mp3 download for video_id youtube */
 router.get('/download/audio/:vid/:name?', (req,res,next)=>{
-    let {vid,name} = req.params;
+   let {vid,name} = req.params;
     vid = decodeURIComponent(vid);/*video id */
-    name = name? decodeURIComponent(name):vid;/* Name: Optional Parameter for sending `name`.mp3 */
+    name = name? decodeURIComponent(name):vid;/*Optional Parameter for sending name.mp4 */
     
-    //youtube-dl -x --audio-format mp3 http://www.youtube.com/watch?v=8veo4Uf6CR8 -f bestaudio   
-
     /*Perfect CODE  */
-
     try {
             /* response attachment for triggering download instead of stream */
-            res.attachment(`[BijiTube]${name}.mp3`);
-            
-            /* For Extracting mp3 from video stream of youtube-dl , on the fly(pipe) */
-            let ffplay_child = spawn("ffmpeg", [
-                '-i', //input
-                'pipe:0', //stdin
-                '-acodec', //audio codec
-                'libmp3lame',//external encoding library
-                '-f', //format
-                'mp3',//mp3
-                '-'//output to stdout
-            ])
-            .on('error',(err)=>next(err))
-            .on('exit',(code)=>console.log(`Ffmpeg exited with code ${code}`));
+            res.attachment(`${name}.m4a`);
 
-            /*Catching Errors on stdin */
-            ffplay_child.stdin.on('error',(err)=>next(err));
-
-            /* Setting output pipe first so that we dont lose any bits */
-            ffplay_child.stdout.pipe(res).on('error',(err)=>next(err));
-
-            /* For Downloading video from youtube using video-id */
+            /*Downloading ,Converting mp4 youtube video using video_id  */
             const ytdl = spawn('youtube-dl', [
                 '-o',//output
                 '-',//stdout
+                '--format=140',
+               // 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',//best mp4 extension , else best
+                //'--recode-video',//recode video 
+                //'mp4',//to mp4 if not mp4
                 '-a',//input stream
                 '-'//stdin
             ])
@@ -68,20 +50,20 @@ router.get('/download/audio/:vid/:name?', (req,res,next)=>{
             .on('exit',(code)=>console.log(`Ytdl exited with code ${code}`));
             
             /* Setting output pipe first so that we dont lose any bits */
-            ytdl.stdout.pipe(ffplay_child.stdin).on('error',(err)=>next(err));
+            ytdl.stdout.pipe(res).on('error',(err)=>next(err));
 
-            /*Catching errors on stdin */
+            /*Catching error on stdin */
             ytdl.stdin.on('error',(err)=>next(err));
 
             /* Writing video url to stdin for youtube-dl */
-            ytdl.stdin.write(`http://www.youtube.com/watch?v=${vid}`);
+            ytdl.stdin.write(`http://www.youtube.com/watch?v=${vid}`)
 
             /*Closing the input stream; imp, else it waits */
             ytdl.stdin.end();
             
 
         } catch (error) {
-            next(err);
+            next(error);
     }
 });
 
